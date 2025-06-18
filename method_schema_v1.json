@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://e-rihs.io/schema/method-v1.0.schema.json",
+    "$id": "https://fair-archaeometry-lab.github.io/lab-portal-schema/method_schema_v1.json",
     "$code": "2615",
     "title": "Standard Method",
     "description": "The schema outlines the required metadata to define a standard method or protocol",
