@@ -1,0 +1,108 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://e-rihs.io/schema/referenceMaterial-v1.0.schema.json",
+    "title": "Reference Material model",
+    "description": "A model to define reference materials used for calibration, correction and quantification of analytical results",
+    "type": "object",
+    "properties": {
+        "generalInformation": {
+            "title": "General information",
+            "description": "basic information about the reference materials",
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "title": "Name",
+                    "description": "The name of the reference material",
+                    "type": "string"
+                },
+                "externalPID": {
+                    "title": "external Identifier",
+                    "description": "the external identifier of the reference materials",
+                    "type": "string"
+                },
+                "material": {
+                    "title": "Material",
+                    "description": "what material is the reference material made of",
+                    "type": "string"
+                },
+                "materialType": {
+                    "title": "materialType",
+                    "description": "which material type is the reference material intended for",
+                    "type": "string"
+                },
+                "manufacturer": {
+                    "title": "Manufacturer",
+                    "description": "Who produced the reference material. Could be a person, a company, or institution",
+                    "type": "string",
+                    "format": "date"
+                },
+                "location": {
+                    "title": "Location",
+                    "description": "Where is the reference material stored",
+                    "type": "string"
+                },
+                "citation": {
+                    "title": "Citation",
+                    "description": "publication related to the reference material",
+                    "type": "string",
+                    "format": "url"
+                }
+            }
+        },
+        "analysis": {
+            "title": "Analysis information",
+            "description": "information and parameters about the measurement of the reference material",
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "method": {
+                    "title": "Analytical method",
+                    "description": "the method used to derive numerical values of the reference material",
+                    "type": "string"
+                },
+                "Analyte": {
+                    "title": "Measured analyte",
+                    "description": "the certified results for the reference material",
+                    "type": "array",
+                    "items":{
+                        "type":"object",
+                        "properties": {
+                            "anyalyteName":{
+                                "title": "Name",
+                                "type": "string"
+                            },
+                            "value":{
+                                "title": "Value",
+                                "type": "string"
+                            },
+                            "unit":{
+                                "title": "Unit",
+                                "type": "string"
+                            },
+                            "uncertainty":{
+                                "title": "Uncertainty",
+                                "type": "string"
+                            },
+                            "uncertaintyType":{
+                                "title": "Uncertainty type",
+                                "type": "string"
+                            }
+                        }
+        
+                    }
+                },
+                "certificate": {
+                    "title": "certificate",
+                    "description": "Certificate issued by the manufacturer. Link to a online document",
+                    "type": "string",
+                    "format": "url"
+                }
+            }
+        }
+    }
+}

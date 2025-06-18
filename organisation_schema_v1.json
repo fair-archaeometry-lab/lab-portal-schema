@@ -1,0 +1,432 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://e-rihs.io/schema/draft/organisation-v0.3.schema.json",
+    "title": "Organisation Model",
+    "type": "object",
+    "properties": {
+      "pid": {
+        "title": "id",
+        "description": "auto generated field handle",
+        "type": "string"
+      },
+      "acronym": {
+        "title": "Acronym",
+        "description": "Acronym",
+        "type": "string"
+      },
+      "name": {
+        "title": "Name",
+        "description": "Name",
+        "type": "string"
+      },
+      "external_pids": {
+        "title": "External PIDs",
+        "description": "External PIDs",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "pid_type",
+            "pid"
+          ],
+          "properties": {
+            "pid_type": {
+              "title": "PID type",
+              "description": "PID type",
+              "type": "string",
+              "examples": [
+                "ark",
+                "arxiv",
+                "bibcode",
+                "crossref funder id",
+                "doi",
+                "ean13",
+                "eissn",
+                "grid",
+                "handle",
+                "igsn",
+                "isbn",
+                "isni",
+                "issn",
+                "istc",
+                "lissn",
+                "lsid",
+                "orcid",
+                "other pid",
+                "pmid",
+                "purl",
+                "raid",
+                "ror",
+                "rrid",
+                "upc",
+                "urn/url",
+                "uuid/guid",
+                "viaf",
+                "w3id",
+                "wikidata"
+              ]
+            },
+            "pid": {
+              "title": "PID",
+              "description": "PID",
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        }
+      },
+      "based_in": {
+        "title": "Country of Operation",
+        "description": "The country in which the organisation is based for legal and professional reasons, the value will be used in relation to distribution of organisations and in relation to initial assemesnt of elegability when it is related to location.",
+        "type": "string",
+        "examples": [
+            "Afghanistan",
+            "Albania",
+            "Algeria",
+            "Andorra",
+            "Angola",
+            "Antigua and Barbuda",
+            "Argentina",
+            "Armenia",
+            "Australia",
+            "Austria",
+            "Azerbaijan",
+            "Bahamas",
+            "Bahrain",
+            "Bangladesh",
+            "Barbados",
+            "Belarus",
+            "Belgium",
+            "Belize",
+            "Benin",
+            "Bhutan",
+            "Bolivia",
+            "Bosnia and Herzegovina",
+            "Botswana",
+            "Brazil",
+            "Brunei",
+            "Bulgaria",
+            "Burkina Faso",
+            "Burundi",
+            "Cabo Verde",
+            "Cambodia",
+            "Cameroon",
+            "Canada",
+            "Central African Republic",
+            "Chad",
+            "Chile",
+            "China",
+            "Colombia",
+            "Comoros",
+            "Congo (Congo-Brazzaville)",
+            "Costa Rica",
+            "Croatia",
+            "Cuba",
+            "Cyprus",
+            "Czech Republic",
+            "Democratic Republic of the Congo",
+            "Denmark",
+            "Djibouti",
+            "Dominica",
+            "Dominican Republic",
+            "Ecuador",
+            "Egypt",
+            "El Salvador",
+            "Equatorial Guinea",
+            "Eritrea",
+            "Estonia",
+            "Eswatini",
+            "Ethiopia",
+            "Fiji",
+            "Finland",
+            "France",
+            "Gabon",
+            "Gambia",
+            "Georgia",
+            "Germany",
+            "Ghana",
+            "Greece",
+            "Grenada",
+            "Guatemala",
+            "Guinea",
+            "Guinea-Bissau",
+            "Guyana",
+            "Haiti",
+            "Honduras",
+            "Hungary",
+            "Iceland",
+            "India",
+            "Indonesia",
+            "Iran",
+            "Iraq",
+            "Ireland",
+            "Israel",
+            "Italy",
+            "Jamaica",
+            "Japan",
+            "Jordan",
+            "Kazakhstan",
+            "Kenya",
+            "Kiribati",
+            "Kuwait",
+            "Kyrgyzstan",
+            "Laos",
+            "Latvia",
+            "Lebanon",
+            "Lesotho",
+            "Liberia",
+            "Libya",
+            "Liechtenstein",
+            "Lithuania",
+            "Luxembourg",
+            "Madagascar",
+            "Malawi",
+            "Malaysia",
+            "Maldives",
+            "Mali",
+            "Malta",
+            "Marshall Islands",
+            "Mauritania",
+            "Mauritius",
+            "Mexico",
+            "Micronesia",
+            "Moldova",
+            "Monaco",
+            "Mongolia",
+            "Montenegro",
+            "Morocco",
+            "Mozambique",
+            "Myanmar",
+            "Namibia",
+            "Nauru",
+            "Nepal",
+            "Netherlands",
+            "New Zealand",
+            "Nicaragua",
+            "Niger",
+            "Nigeria",
+            "North Korea",
+            "North Macedonia",
+            "Norway",
+            "Oman",
+            "Pakistan",
+            "Palau",
+            "Palestine State",
+            "Panama",
+            "Papua New Guinea",
+            "Paraguay",
+            "Peru",
+            "Philippines",
+            "Poland",
+            "Portugal",
+            "Qatar",
+            "Romania",
+            "Russia",
+            "Rwanda",
+            "Saint Kitts and Nevis",
+            "Saint Lucia",
+            "Saint Vincent and the Grenadines",
+            "Samoa",
+            "San Marino",
+            "Sao Tome and Principe",
+            "Saudi Arabia",
+            "Senegal",
+            "Serbia",
+            "Seychelles",
+            "Sierra Leone",
+            "Singapore",
+            "Slovakia",
+            "Slovenia",
+            "Solomon Islands",
+            "Somalia",
+            "South Africa",
+            "South Korea",
+            "South Sudan",
+            "Spain",
+            "Sri Lanka",
+            "Sudan",
+            "Suriname",
+            "Sweden",
+            "Switzerland",
+            "Syria",
+            "Taiwan",
+            "Tajikistan",
+            "Tanzania",
+            "Thailand",
+            "Timor-Leste",
+            "Togo",
+            "Tonga",
+            "Trinidad and Tobago",
+            "Tunisia",
+            "Turkey",
+            "Turkmenistan",
+            "Tuvalu",
+            "Uganda",
+            "Ukraine",
+            "United Arab Emirates",
+            "United Kingdom",
+            "United States of America",
+            "Uruguay",
+            "Uzbekistan",
+            "Vanuatu",
+            "Vatican City",
+            "Venezuela",
+            "Vietnam",
+            "Yemen",
+            "Zambia",
+            "Zimbabwe"
+          ]
+          
+      },
+      "organisation_type": {
+        "title": "Organisation type",
+        "description": "Legal status",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "examples": [
+            "archive",
+            "charitable organisation",
+            "consortium",
+            "educational institution",
+            "for-profit organisation",
+            "gallery",
+            "governmental organisation",
+            "heritage organisation",
+            "library",
+            "museum",
+            "non-governmental organisation",
+            "non-profit organisation",
+            "private body",
+            "public body",
+            "research organisation",
+            "university"
+          ]
+        }
+      },
+      "part_of_organisation": {
+        "title": "Parent organisations",
+        "description": "Parent organisations",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "organisation_pid"
+          ],
+          "properties": {
+            "organisation_pid": {
+              "title": "Organisation PID",
+              "description": "Organisation PID",
+              "type": "string",
+              "format": "uri"
+            },
+            "start_date": {
+              "title": "Start date",
+              "description": "Start date",
+              "type": "string",
+              "format": "date"
+            },
+            "end_date": {
+              "title": "End date",
+              "description": "End date",
+              "type": "string",
+              "format": "date"
+            }
+          }
+        }
+      },
+      "mbox": {
+        "title": "Email",
+        "description": "Contact email address",
+        "type": "string",
+        "format": "email"
+      },
+      "phone": {
+        "title": "Phone",
+        "description": "Contact Phone Number",
+        "type": "string"
+      },
+      "img_url": {
+        "title": "Image URL",
+        "description": "Image URL",
+        "type": "string",
+        "format": "uri"
+      },
+      "webpage": {
+        "title": "Webpage",
+        "description": "Webpage",
+        "type": "array",
+        "items": {
+          "title": "URL",
+          "description": "URL",
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "research_disciplines": {
+        "title": "Research Disciplines",
+        "description": "Which domains or disciplines has a given service worked within, has experience within.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "research_reference": {
+        "title": "Research Reference",
+        "description": "Research Reference",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "reference"
+          ],
+          "properties": {
+            "reference": {
+              "title": "Citation",
+              "description": "Preferred Citation text",
+              "type": "string"
+            },
+            "url": {
+              "title": "URL",
+              "description": "URL",
+              "type": "string",
+              "format": "uri"
+            },
+            "reference_role": {
+              "title": "Reference Role",
+              "description": "What is the prupose of the reference what does it relate to pr provide more information for.",
+              "type": "string",
+              "examples": [
+                "Example research",
+                "Collaboration",
+                "E-RIHS Report"
+              ]
+            }
+          }
+        }
+      },
+      "cited_as": {
+        "title": "Cited as",
+        "description": "Cited as, funding name, etc.",
+        "type": "string"
+      },
+      "joined_the_field_date": {
+        "title": "Date of joining this research field",
+        "description": "When did this organisation start working in this field?",
+        "type": "string",
+        "format": "date"
+      },
+      "first_active_date": {
+        "title": "First active date",
+        "description": "First date this organisation was active in E-RIHS (administrative field which will be automatically filled in)",
+        "type": "string",
+        "format": "date"
+      },
+      "last_active_date": {
+        "title": "Last active date",
+        "description": "Last date this organisation was active in E-RIHS (administrative field which will be automatically filled in)",
+        "type": "string",
+        "format": "date"
+      }
+    }
+  }

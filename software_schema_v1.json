@@ -1,0 +1,476 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://e-rihs.io/schema/software-v1.0.schema.json",
+    "title": "Software model",
+    "description": "Software model taken from https://codemeta.github.io/codemeta-generator/",
+    "type": "object",
+    "properties": {
+        "software": {
+            "title": "The software itself",
+            "description": "basic information about the software",
+            "type": "object",
+            "required": [
+                "name",
+                "license",
+                "applicationCategory"
+            ],
+            "properties": {
+                "name": {
+                    "title": "Name",
+                    "description": "The name of the item (software, Organization)",
+                    "type": "string"
+                },
+                "description": {
+                    "title": "Description",
+                    "description": "A description of the item",
+                    "type": "string"
+                },
+                "dateCreated": {
+                    "title": "Creation date",
+                    "description": "The date on which the CreativeWork was created or the item was added to a DataFeed.",
+                    "type": "string",
+                    "format": "date"
+                },
+                "datePublished": {
+                    "title": "First publication date",
+                    "description": "Date of first broadcast/publication",
+                    "type": "string",
+                    "format": "date"
+                },
+                "license": {
+                    "title": "License type",
+                    "description": "The type of license under which the software is distributed.",
+                    "type": "string",
+                    "enum": [
+                        "copyleft (cc-by-sa,gpl,agpl)",
+                        "noncommercial (cc-by-nc)",
+                        "permissive (cc-by, mit, bsd, apache)",
+                        "proprietary",
+                        "public domain (cc0)"
+                    ]
+                }
+            }
+        },
+        "currentVersion": {
+            "title": "Current version of the software",
+            "type": "object",
+            "properties": {
+                "versionNumber": {
+                    "title": "Version number",
+                    "description": "Version number of the software",
+                    "type": "string"
+                },
+                "releaseDate": {
+                    "title": "Release date",
+                    "description": "The date on which the software was most recently modified",
+                    "type": "string",
+                    "format": "date"
+                },
+                "downloadURL": {
+                    "title": "Download URL",
+                    "description": "If the file can be downloaded, URL to download the binary",
+                    "type": "string",
+                    "format": "url"
+                },
+                "releaseNote": {
+                    "title": "Release note",
+                    "description": "Description of what changed in this version.",
+                    "type": "string"
+                }
+            }
+        },
+        "Persons": {
+            "title": "Persons involved in the development of the software",
+            "type": "object",
+            "properties": {
+                "developers": {
+                    "title": "Developers",
+                    "type": "array",
+                    "items": {
+                        "title": "Developer",
+                        "type": "object",
+                        "properties": {
+                            "givenName": {
+                                "title": "Given name",
+                                "type": "string"
+                            },
+                            "familyName": {
+                                "title": "Family name",
+                                "type": "string"
+                            },
+                            "emailAddress": {
+                                "title": "E-mail address",
+                                "type": "string"
+                            },
+                            "URI": {
+                                "title": "Unique identifier",
+                                "type": "string",
+                                "format": "url"
+                            },
+                            "affiliation": {
+                                "title": "Affiliation",
+                                "type": "string"
+                            },
+                            "role": {
+                                "title": "Role",
+                                "type": "string",
+                                "enum": [
+                                    "author",
+                                    "contributor",
+                                    "maintainer",
+                                    "developer",
+                                    "other"
+                                ]
+                            },
+                            "startDate": {
+                                "title": "Start date",
+                                "type": "string",
+                                "format": "date"
+                            },
+                            "endDate": {
+                                "title": "End date",
+                                "type": "string",
+                                "format": "date"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "discoverability": {
+            "title": "Discoverability and citation",
+            "type": "object",
+            "properties": {
+                "uniqueIdentifier": {
+                    "title": "Unique identifier",
+                    "description": "The identifier property represents any kind of identifier for any kind of Thing, such as ISBNs, GTIN codes, UUIDs etc. Schema.org provides dedicated properties for representing many of these, either as textual strings or as URL (URI) links. See background notes for more details",
+                    "type": "string",
+                    "format": "url"
+                },
+                "applicationCategory": {
+                    "title": "Application category",
+                    "description": "Type of software application, e.g. 'Game, Multimedia'.",
+                    "type": "string"
+                },
+                "keywords": {
+                    "title": "Keywords",
+                    "description": "Keywords or tags used to describe this content. Multiple entries in a keywords list are typically delimited by commas",
+                    "type": "string"
+                },
+                "funding": {
+                    "title": "Funding",
+                    "description": "Funding source (e.g. specific grant)",
+                    "type": "string"
+                },
+                "funder": {
+                    "title": "Funder",
+                    "description": "A person or organization that supports (sponsors) something through some kind of financial contribution.)",
+                    "type": "string"
+                }
+            }
+        },
+        "development": {
+            "title": "Development community/tools",
+            "type": "object",
+            "properties": {
+                "codeRepository": {
+                    "title": "Code repository",
+                    "description": "Link to the repository where the un-compiled, human readable code and related code is located (SVN, GitHub, CodePlex, institutional GitLab instance, etc.)",
+                    "type": "string",
+                    "format": "url"
+                },
+                "continuousIntegration": {
+                    "title": "Continuous integration",
+                    "description": "link to continuous integration service (Travis-Cl, Gitlab-Cl.etc.)",
+                    "type": "string",
+                    "format": "url"
+                },
+                "issueTracker": {
+                    "title": "Issue tracker",
+                    "description": "link to software bug reporting or issue tracking system",
+                    "type": "string",
+                    "format": "url"
+                },
+                "relatedLinks": {
+                    "title": "Related links",
+                    "description": "A link related to this object, e.g. related web pages",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "relatedLink": {
+                                "title": "Related link",
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "runtimeEnvironment": {
+            "title": "Run-time environment",
+            "type": "object",
+            "properties": {
+                "programmingLanguages": {
+                    "title": "Programming languages",
+                    "description": "The computer programming language.",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "programmingLanguage": {
+                                "title": "Programming language",
+                                "type": "string",
+                                "enum": [
+                                    "1C Enterprise",
+                                    "ABAP",
+                                    "ActionScript",
+                                    "Ada",
+                                    "Agda",
+                                    "AL",
+                                    "AngelScript",
+                                    "Apex",
+                                    "APL",
+                                    "AppleScript",
+                                    "Arc",
+                                    "ASP.NET",
+                                    "Assembly",
+                                    "AutoHotkey",
+                                    "AutoIt",
+                                    "Awk",
+                                    "Ballerina",
+                                    "Batchfile",
+                                    "Bicep",
+                                    "BlitzMax",
+                                    "Boo",
+                                    "Brainfuck",
+                                    "Brightscript",
+                                    "C",
+                                    "C#",
+                                    "C++",
+                                    "Ceylon",
+                                    "Chapel",
+                                    "Cirru",
+                                    "Clarion",
+                                    "Clean",
+                                    "Clojure",
+                                    "CMake",
+                                    "COBOL",
+                                    "CoffeeScript",
+                                    "Common Lisp",
+                                    "Cool",
+                                    "Crystal",
+                                    "D",
+                                    "Dart",
+                                    "Dhall",
+                                    "DM",
+                                    "Dylan",
+                                    "Eiffel",
+                                    "Elixir",
+                                    "Elm",
+                                    "Emacs Lisp",
+                                    "Erlang",
+                                    "F#",
+                                    "Factor",
+                                    "Forth",
+                                    "Fortran",
+                                    "FreeMarker",
+                                    "F*",
+                                    "GDScript",
+                                    "Gleam",
+                                    "Go",
+                                    "Gosu",
+                                    "Grammatical Framework",
+                                    "Groovy",
+                                    "Hack",
+                                    "Haskell",
+                                    "Haxe",
+                                    "Idris",
+                                    "Io",
+                                    "J",
+                                    "Java",
+                                    "JavaScript",
+                                    "Jinja",
+                                    "Julia",
+                                    "Kotlin",
+                                    "Lasso",
+                                    "LiveScript",
+                                    "Lua",
+                                    "MATLAB",
+                                    "MoonScript",
+                                    "Nim",
+                                    "OCaml",
+                                    "Perl",
+                                    "PHP",
+                                    "Prolog",
+                                    "PureScript",
+                                    "Python",
+                                    "R",
+                                    "Racket",
+                                    "Raku",
+                                    "Ruby",
+                                    "Rust",
+                                    "Scala",
+                                    "Scheme",
+                                    "Shell",
+                                    "Solidity",
+                                    "Swift",
+                                    "TypeScript",
+                                    "V",
+                                    "Vala",
+                                    "Verilog",
+                                    "VHDL",
+                                    "Zig"
+                                  ]
+                            }
+                        }
+                    }
+                },
+                "runtimePlatforms": {
+                    "title": "Runtime platforms",
+                    "description": "Runtime platform or script interpreter dependencies (Example - Java v1, Python2.3, .Net Framework 3.0). Supersedes runtime.",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "runtimePlatform": {
+                                "title": "Runtime Platform",
+                                "type": "string",
+                                "enum": [
+                                    "WinRT",
+                                    "POSTIX",
+                                    "ART",
+                                    "iOS/macOS",
+                                    "JVM",
+                                    "CLR/NET",
+                                    "BEAM/Erlang",
+                                    "LuaJIT",
+                                    "HHVM",
+                                    "V8",
+                                    "SpiderMonkey",
+                                    "Node.js",
+                                    "Deno",
+                                    "WebAssembly",
+                                    "AWS Lamba",
+                                    "Azure Functions",
+                                    "Google Cloud Functions",
+                                    "React Native",
+                                    "Flutter Engine",
+                                    "Xamarin",
+                                    "CPython",
+                                    "Ruby MRI",
+                                    "Zend Engine (PHP)",
+                                    "EVM",
+                                    "WASM Blockchains",
+                                    "Solana Runtime"
+                                  ]
+                            }
+                        }
+                    }
+                },
+                "operatingSystems": {
+                    "title": "Operating systems",
+                    "description": "Operating systems supported (Windows 7, OSX 10.6, Android 1.6).",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "operatingSystem": {
+                                "title": "Operating system",
+                                "type": "string",
+                                "enum": [
+                                    "Windows",
+                                    "macOS",
+                                    "Linux",
+                                    "Ubuntu",
+                                    "Debian",
+                                    "Fedora",
+                                    "Red Hat Enterprise Linux (RHEL)",
+                                    "Android",
+                                    "iOS",
+                                    "iPadOS",
+                                    "watchOS",
+                                    "tvOS",
+                                    "ChromeOS",
+                                    "FreeBSD",
+                                    "Solaris",
+                                    "Tizen",
+                                    "HarmonyOS"
+                                  ]  
+                            }
+                        }
+                    }
+                },
+                "softwareSuggestions": {
+                    "title": "Operating systems",
+                    "description": "Optional dependencies , e.g. for optional features, code development, etc.",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "softwareSuggestion": {
+                                "title": "Software suggestion",
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "editorialReview": {
+            "title": "Editorial review",
+            "type": "object",
+            "properties": {
+                "referencePublications": {
+                    "title": "Reference publication",
+                    "description": "An academic publication related to the software.",
+                    "type": "string",
+                    "format": "url"
+                },
+                "reviewAspect": {
+                    "title": " Review aspect",
+                    "description": "This Review is relevant to this part or facet of the object being review",
+                    "type": "string"
+                },
+                "reviewBody": {
+                    "title": " Review body",
+                    "description": "The actual body of the review",
+                    "type": "string"
+                }
+            }
+        },
+        "additionalInfo": {
+            "title": "Additional Info",
+            "type": "object",
+            "properties": {
+                "developmentStatus": {
+                    "title": "Development status",
+                    "description": "Description of development status, e.g. Active, inactive, suspended. See https://www.repostatus.org/",
+                    "type": "string",
+                    "enum": [
+                        "concept",
+                        "WIP",
+                        "suspended",
+                        "abandoned",
+                        "active",
+                        "inactive",
+                        "unsupported",
+                        "moved"
+                    ]
+                },
+                "isSourceCodeOf": {
+                    "title": "Is source code of",
+                    "description": "Link that states where software application is built from a given source code. This is the reverse property of 'hasSourceCode'",
+                    "type": "string",
+                    "format": "url"
+                },
+                "isPartOf": {
+                    "title": "Is part of",
+                    "description": "Indicates a CreativeWork that this CreativeWork is (in some sense) part of. Reverse property hasPart",
+                    "type": "string",
+                    "format": "url"
+                }
+            }
+        }
+    }
+}
