@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://fair-archaeometry-lab.github.io/lab-portal-schema/service_schema_v1.json",
+  "$id": "https://raw.githubusercontent.com/fair-archaeometry-lab/lab-portal-schema/refs/heads/main/service_schema_v1.json",
   "title": "Service Model",
   "type": "object",
   "required": [
