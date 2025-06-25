@@ -55,12 +55,12 @@
                             "properties": {
                                 "ownerIdentifierValue": {
                                     "title": "Owner identifier value",
-                                    "description": "This subfield set the identifier used to identify the instrument",
+                                    "description": "This subfield set the identifier used to identify the owner",
                                     "type": "string"
                                 },
                                 "ownerIdentifierType": {
                                     "title": "Owner identifier type",
-                                    "description": "This subfield sets the type of the identifier used to identify the instrument",
+                                    "description": "This subfield sets the type of the identifier used to identify the owner",
                                     "type": "string",
                                     "examples": [
                                         "ark",
