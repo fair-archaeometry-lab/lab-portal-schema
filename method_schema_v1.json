@@ -275,7 +275,10 @@
                 "X-ray absorption near edge structure spectrometry",
                 "X-ray photoelectron spectrometery",
                 "X-ray photoelectron spectrometry composition mapping",
-                "X-ray powder diffraction"
+                "X-ray powder diffraction",
+                "Scanning electron microscopy",
+                "Electron probe microanalysis",
+                "Optical microscopy"                
             ]
         },
         "technique_other": {
