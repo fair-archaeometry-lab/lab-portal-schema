@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id": "https://fair-archaeometry-lab.github.io/lab-portal-schema/reference_material_schema_v1.json",
+    "$id": "https://raw.githubusercontent.com/fair-archaeometry-lab/lab-portal-schema/refs/heads/main/reference_material_schema_v1.json",
     "title": "Reference Material model",
     "description": "A model to define reference materials used for calibration, correction and quantification of analytical results",
     "type": "object",
