@@ -1,0 +1,112 @@
+@prefix ex: <https://fair-archaeometry-lab.github.io/lab-portal-schema/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+#################################################################
+# Ontology Definition
+#################################################################
+
+ex: a owl:Ontology ;
+    rdfs:label "FAIR Archaeometry Lab Service Schema" ;
+    rdfs:comment "Ontology version of the JSON Schema for lab services." ;
+    owl:versionInfo "1.0" .
+
+#################################################################
+# Classes
+#################################################################
+
+ex:Service a rdfs:Class ;
+    rdfs:label "Service" ;
+    rdfs:comment "A laboratory service offered by the FAIR Archaeometry Lab." .
+
+ex:Contact a rdfs:Class ;
+    rdfs:label "Contact" ;
+    rdfs:comment "Contact person or institution for the service." .
+
+ex:Instrument a rdfs:Class ;
+    rdfs:label "Instrument" ;
+    rdfs:comment "Instrument related to the service." .
+
+#################################################################
+# Properties for Service
+#################################################################
+
+ex:serviceId a rdf:Property ;
+    rdfs:label "Service ID" ;
+    rdfs:domain ex:Service ;
+    rdfs:range xsd:string .
+
+ex:serviceName a rdf:Property ;
+    rdfs:label "Service Name" ;
+    rdfs:domain ex:Service ;
+    rdfs:range xsd:string .
+
+ex:description a rdf:Property ;
+    rdfs:label "Description" ;
+    rdfs:domain ex:Service ;
+    rdfs:range xsd:string .
+
+ex:serviceType a rdf:Property ;
+    rdfs:label "Service Type" ;
+    rdfs:domain ex:Service ;
+    rdfs:range xsd:string .
+
+ex:keywords a rdf:Property ;
+    rdfs:label "Keywords" ;
+    rdfs:domain ex:Service ;
+    rdfs:range xsd:string .
+
+ex:instruments a rdf:Property ;
+    rdfs:label "Instruments" ;
+    rdfs:domain ex:Service ;
+    rdfs:range ex:Instrument .
+
+ex:contact a rdf:Property ;
+    rdfs:label "Contact" ;
+    rdfs:domain ex:Service ;
+    rdfs:range ex:Contact .
+
+#################################################################
+# Properties for Contact
+#################################################################
+
+ex:contactName a rdf:Property ;
+    rdfs:label "Contact Name" ;
+    rdfs:domain ex:Contact ;
+    rdfs:range xsd:string .
+
+ex:contactEmail a rdf:Property ;
+    rdfs:label "Contact Email" ;
+    rdfs:domain ex:Contact ;
+    rdfs:range xsd:string .
+
+ex:contactPhone a rdf:Property ;
+    rdfs:label "Contact Phone" ;
+    rdfs:domain ex:Contact ;
+    rdfs:range xsd:string .
+
+ex:contactAffiliation a rdf:Property ;
+    rdfs:label "Contact Affiliation" ;
+    rdfs:domain ex:Contact ;
+    rdfs:range xsd:string .
+
+#################################################################
+# Properties for Instrument
+#################################################################
+
+ex:instrumentName a rdf:Property ;
+    rdfs:label "Instrument Name" ;
+    rdfs:domain ex:Instrument ;
+    rdfs:range xsd:string .
+
+ex:instrumentType a rdf:Property ;
+    rdfs:label "Instrument Type" ;
+    rdfs:domain ex:Instrument ;
+    rdfs:range xsd:string .
+
+ex:instrumentModel a rdf:Property ;
+    rdfs:label "Instrument Model" ;
+    rdfs:domain ex:Instrument ;
+    rdfs:range xsd:string .
