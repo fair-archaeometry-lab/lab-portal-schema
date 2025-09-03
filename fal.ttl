@@ -1,0 +1,768 @@
+@prefix fal: <https://fair-archaeometry-lab.github.io/lab-portal-schema/#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+
+#################################################################
+# Ontology Definition
+#################################################################
+
+fal: a owl:Ontology ;
+    rdfs:label "Metadata Profile for Fair Archaeometry Lab" ;
+    rdfs:comment "A RDF version of metadata profile for fair archaeometry lab." ;
+    owl:versionInfo "1.0" .
+
+#################################################################
+# Classes
+#################################################################
+
+fal:Service a rdfs:Class ;
+    rdfs:label "Service" ;
+    rdfs:comment "Service schema that defines analytical activities." .
+
+fal:Device a rdfs:Class ;
+    rdfs:label "Device" ;
+    rdfs:comment "The schema that defines the analytical instruments. It complies with the profile of PIDINST working group" .
+
+fal:Software a rdfs:Class ;
+    rdfs:label "Software" ;
+    rdfs:comment "Software model taken from https://codemeta.github.io/codemeta-generator/" .
+
+fal:Organisation a rdfs:Class ;
+    rdfs:label "Organisation" ;
+    rdfs:comment "An actor offering this service, as defined in the system." .
+
+fal:Method a rdfs:Class ;
+    rdfs:label "Standard Method" ;
+    rdfs:comment "The schema outlines the required metadata to define a standard method or protocol." .
+
+fal:Person a rdfs:Class ;
+    rdfs:label "Person" ;
+    rdfs:comment "Person that involves in the service" .
+
+fal:Publication a rdfs:Class ;
+    rdfs:label "Publication" ;
+    rdfs:comment "Publications related to the service" .
+
+fal:ReferenceMaterial a rdf:Class ;
+    rdfs:label "Reference Material" ;
+    rdfs:comment "A reference material used for calibration, correction and quantification of analytical results." .
+
+fal:Analyte a rdf:Class ;
+    rdfs:label "Analyte" ;
+    rdfs:comment "Certificate of reference materials." .
+
+#################################################################
+# Properties for Service
+#################################################################
+
+fal:hasServiceSummary a rdf:Property ;
+    rdfs:label "Service Summary" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:string ;
+    rdfs:comment "A brief description of a specific technical or access service offered, such as the use of X to investigate Y." .
+
+fal:hasReadinessLevel a rdf:Property ;
+    rdfs:label "Service Readiness Level" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:string ;
+    rdfs:comment "This scale is directly based on the standard - Technology readiness levels (TRLs), adapted for heritage science, which are a method for estimating the maturity of the services being offered. For more details see https://en.wikipedia.org/wiki/Technology_readiness_level." .
+
+fal:hasOperatingLanguages a rdf:Property ;
+    rdfs:label "Operating Languages" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:string ;
+    rdfs:comment "What languages can the team operate in or what language is a tool presented in." .
+
+fal:hasMeasurableProperties a rdf:Property ;
+    rdfs:label "Measurable Properties" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Measurable properties that can be studied by this service." . 
+
+fal:hasMaterials a rdf:Property ;
+    rdfs:label "Materials" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Materials that can be studied by this service." .
+
+fal:hasResearchQuestions a rdf:Property ;
+    rdfs:label "Research Questions" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Typical research questions that a service designed to answer. This field is free text, but will likely be replaced with a controlled list." .
+
+fal:hasServiceFunctions a rdf:Property ;
+    rdfs:label "Service Functions" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Short and descriptive service practical level activities, what has a service been used for, what is it intended for. E.g. 'Materials Analysis', 'Dye Analysis', 'De-convolution XRF Spectra', 'Calculating Light Exposure Allowance'. At the moment, these are free text but will likely be replaced with a controlled list." .
+
+fal:hasLimitations a rdf:Property ;
+    rdfs:label "Service Limitations" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Description of any limitations in the access provision by the service." .
+
+fal:hasServiceResources a rdf:Property ;
+    rdfs:label "Research Resources" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Research resources made accessible by the service should be defined in the system and represent the heritage collections, objects, samples, archives, other research resources directly provided by the service." .
+
+fal:hasInputDatasets a rdf:Property ;
+    rdfs:label "Example input datasets" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Services that process data can provide PIDs/URLs for example datasets to demonstrate what data and formats are required for the Service to run." .
+
+fal:hasOutputDatasets a rdf:Property ;
+    rdfs:label "Example output datasets" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Services that generate data can provide PIDs/URLs for example datasets to demonstrate what types of data and information will be created." .
+
+fal:hasServiceVersionDate a rdf:Property ;
+    rdfs:label "Service Version Date" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:date ;
+    rdfs:comment "The version date is the date from which this particular version of this Service was offered in a formal capacity by the defined Access provider." .
+
+fal:hasServiceDMP a rdf:Property ;
+    rdfs:label "Service Data Management Plan" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:string ;
+    rdfs:comment "An open description of the data management procedures followed with the defined service, including licence issues, preferred data repositories, publication embargoes, common file formats, software and systems used, etc." .
+
+fal:hasServiceDataflow a rdf:Property ;
+    rdfs:label "Service Data Management Plan" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:string ;
+    rdfs:comment "A reference to a diagram or written description of the dataflow. More complex services, multiple pieces of equipment or data processing steps, might benefit for a summary description of the key stages, including details of any required background information, direct input from users and any processing steps." .
+
+fal:hasServiceOutputDescription a rdf:Property ;
+    rdfs:label "Service Output Description" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:string ;
+    rdfs:comment "A description of all of the raw and processes outputs created by a given services including details of how they relate to or rely on each other." .
+
+fal:hasServiceInputDescription a rdf:Property ;
+    rdfs:label "Service Input Description" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:string ;
+    rdfs:comment "A description of the required formats or files required for any service which processes existing data." .
+
+fal:hasServiceOtherComments a rdf:Property ;
+    rdfs:label "Other Comments" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Free text opportunity to advocate for what is novel or special about this particular access." .
+
+fal:hasAccessPeriodUnit a rdf:Property ;
+    rdfs:label "Service Access Period Unit" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:string ;
+    rdfs:comment "For previously defined services this has commonly been defined in days or occasionally hours - but with the development of digital services additional smaller time units might be needed. The possibility of having the costs 'per sample' is currently being evaluated. For the time being, please calculate your service costs in terms of time units." .
+
+fal:hasAccessHourUnit a rdf:Property ;
+    rdfs:label "Service Access Hours per Unit" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:integer ;
+    rdfs:comment "Access units are described as time periods, but depending on the nature of a service this might relate to a range of different periods of activity time. For example a day could relate to a working day or a calendar day, a digital service could relate to run time or processing time. So this value is used to relate actual activity time to the recorded access unit. This value is only required in case of ambiguous access unit types. Use '0' if not applicable." .
+
+fal:hasAccessUnitCost a rdf:Property ;
+    rdfs:label "Service Access Unit Cost" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:decimal ;
+    rdfs:comment "Service offered can include a unit cost in Euro. This cost is expected to represent a proportion of the actual cost of providing a given Service ranging from zero to the full actual cost of providing the service. Access service costs will be based on potentially discounted actual costs and may not include any for-profit contributions." .
+
+fal:hasActiveService a rdf:Property ;
+    rdfs:label "Active Service" ;
+    rdfs:domain fal:Service ;
+    rdfs:range xsd:boolean ;
+    rdfs:comment "Is the service currently open for access?" .
+
+
+# Relationship Properties
+
+fal:hasServiceMethods a rdf:Property ;
+    rdfs:label "Method Statements" ;
+    rdfs:domain fal:Service ;
+    rdfs:range fal:Method ;
+    rdfs:comment "Service related method statements should be defined in the system and represent the procedures for using individual pieces of equipment or software systems used within the service - detail of setup, methodology, procedures, etc. should all be described within this document and is also directly attached to relevant the Tool (equipment or software) records. Linked to the method model." .
+
+#################################################################
+# Properties for Device
+#################################################################
+
+fal:hasDeviceLandingPage a rdf:Property ;
+    rdfs:label "Landing Page" ;
+    rdfs:domain fal:Device ;
+    rdfs:range xsd:anyURI ;
+    rdfs:comment "A landing page that the identifier resolves to." .
+
+fal:hasDeviceModelName a rdf:Property ;
+    rdfs:label "Model Name" ;
+    rdfs:domain fal:Device ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Name of the model or type of device as attributed by the manufacturer." .
+
+fal:hasDeviceModelIdentifier a rdf:Property ;
+    rdfs:label "Model Identifier" ;
+    rdfs:domain fal:Device ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Identifier used to identify the model." .
+
+fal:hasInstrumentTypeName a rdf:Property ;
+    rdfs:label "Instrument Type" ;
+    rdfs:domain fal:Device ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Classification of the type of the instrument." . 
+
+fal:hasMeasuredVariable a rdf:Property ;
+    rdfs:label "Measured Variables" ;
+    rdfs:domain fal:Device ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The variable(s) that this instrument measures or observes." . 
+
+fal:hasCommissionDated a rdf:Property ;
+    rdfs:label "Commission Date" ;
+    rdfs:domain fal:Device ;
+    rdfs:range xsd:date ;
+    rdfs:comment "The date when the instrument started to operate." .
+
+fal:hasDeCommissionDated a rdf:Property ;
+    rdfs:label "DeCommission Date" ;
+    rdfs:domain fal:Device ;
+    rdfs:range xsd:date ;
+    rdfs:comment "The date when the instrument retired." .
+
+fal:hasRelatedIdentifier a rdf:Property ;
+    rdfs:label "Related Identifiers" ;
+    rdfs:domain fal:Device ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Identifiers of related resources." .
+
+fal:hasRelationType a rdf:Property ;
+    rdfs:label "Relation Type" ;
+    rdfs:domain fal:Device ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Description of the relationship." .
+
+fal:hasRelatedIdentifierName a rdf:Property ;
+    rdfs:label "Name of Related Identifier" ;
+    rdfs:domain fal:Device ;
+    rdfs:range xsd:string ;
+    rdfs:comment "A name for the related resource, may be used to give a hint on the content of that resource." .
+
+fal:hasAlternateIdentifier a rdf:Property ;
+    rdfs:label "Alternate Identifiers" ;
+    rdfs:domain fal:Device ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Identifiers other than the PIDINST pertaining to the same instrument instance. This should be used if the instrument has a serial number. Other possible uses include an owner's inventory number or an entry in some instrument data base." .
+
+fal:hasAlternateIdentifierName a rdf:Property ;
+    rdfs:label "Name of Alternate Identifier" ;
+    rdfs:domain fal:Device ;
+    rdfs:range xsd:string ;
+    rdfs:comment "A name for the related resource, may be used to give a hint on the content of that resource." .
+
+fal:hasLastCheckDate a rdf:Property ;
+    rdfs:label "Last Checked Date" ;
+    rdfs:domain fal:Device ;
+    rdfs:range xsd:date ;
+    rdfs:comment "For hardware tools the last checked date relates to when equipment was last tested or calibrated, to confirm that it is working and performing as designed." .
+
+fal:hasAcquisitionArea a rdf:Property ;
+    rdfs:label "Acquisition Area" ;
+    rdfs:domain fal:Device ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The areas of the object or sample that can be examined by the equipment. This dropdown list gives a few examples, but if required, you can enter a different term here depending on the equipment. One general recommendation is to extend the existing term with a precise value or a range (e.g. 'small spot (27mm2)')." .
+
+fal:hasImpact a rdf:Property ;
+    rdfs:label "Impact on object or sample" ;
+    rdfs:domain fal:Device ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The impact of the equipment on the object being examined." .
+
+fal:hasLastCalibrated a rdf:Property ;
+    rdfs:label "Last Calibrated" ;
+    rdfs:domain fal:Device ;
+    rdfs:range xsd:date ;
+    rdfs:comment "Date when the equipment was last calibrated." .
+
+# Relationship Properties
+
+fal:hasDeviceManufacturer a rdf:Property ;
+    rdfs:label "Manufacturer" ;
+    rdfs:domain fal:Device ;
+    rdfs:range [ a owl:Class ;
+                owl:unionOf (fal:Organisation fal:Person) ] ;
+    rdfs:comment "The instrument's manufacturer(s) or developer. This may also be the owner for custom build instruments." .
+
+fal:hasDeviceOwner a rdf:Property ;
+    rdfs:label "Owner" ;
+    rdfs:domain fal:Device ;
+    rdfs:range [ a owl:Class ;
+                owl:unionOf (fal:Organisation fal:Person) ] ;
+    rdfs:comment "Institution(s) responsible for the management of the instrument. This may include the legal owner, the operator, or an institute providing access to the instrument." .
+
+#################################################################
+# Properties for Software
+#################################################################
+
+fal:hasSoftwareDatePublished rdf:Property ;
+    rdfs:label "First Publication Date" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:date ;
+    rdfs:comment "Date of first broadcast/publication." .
+
+fal:hasSoftwareLicense rdf:Property ;
+    rdfs:label "License Type" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The type of license under which the software is distributed." .
+
+fal:hasSoftwareReleaseDate rdf:Property ;
+    rdfs:label "Release Date" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:date ;
+    rdfs:comment "The date on which the software was most recently modified." .
+
+fal:hasSoftwareDownloadURL rdf:Property ;
+    rdfs:label "Download URL" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:anyURI ;
+    rdfs:comment "URL to download the binary." .
+
+fal:hasSoftwareReleaseNote rdf:Property ;
+    rdfs:label "Release Note" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Description of what changed in this version." .
+
+fal:hasSoftwareUniqueIdentifier rdf:Property ;
+    rdfs:label "Unique Identifier" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:anyURI ;
+    rdfs:comment "Identifier for the software such as ISBNs, GTIN codes, UUIDs etc." .
+
+fal:hasApplicationCategory rdf:Property ;
+    rdfs:label "Application Category" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Type of software application, e.g. 'Game, Multimedia'." .
+
+fal:hasSoftwareFunding rdf:Property ;
+    rdfs:label "Funding" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Funding source (e.g. specific grant)." .
+
+fal:hasCodeRepository rdf:Property ;
+    rdfs:label "Code Repository" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:anyURI ;
+    rdfs:comment "Link to the source code repository." .
+
+fal:hasContinuousIntegration rdf:Property ;
+    rdfs:label "Continuous Integration" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:anyURI ;
+    rdfs:comment "Link to continuous integration service." .
+
+fal:hasIssueTracker rdf:Property ;
+    rdfs:label "Issue Tracker" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:anyURI ;
+    rdfs:comment "Link to software bug reporting or issue tracking system." .
+
+fal:hasProgrammingLanguage rdf:Property ;
+    rdfs:label "Programming Language" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The computer programming language used." .
+
+fal:hasRuntimePlatform rdf:Property ;
+    rdfs:label "Runtime Platform" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Runtime platform or script interpreter dependencies." .
+
+fal:hasOperatingSystem rdf:Property ;
+    rdfs:label "Operating System" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Operating systems supported." .
+
+fal:hasSoftwareSuggestion rdf:Property ;
+    rdfs:label "Software Suggestion" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Optional dependencies for optional features, code development, etc." .
+
+fal:hasReviewAspect rdf:Property ;
+    rdfs:label "Review Aspect" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:string ;
+    rdfs:comment "This Review is relevant to this part or facet of the object being reviewed." .
+
+fal:hasReviewBody rdf:Property ;
+    rdfs:label "Review Body" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The actual body of the review." .
+
+fal:hasDevelopmentStatus rdf:Property ;
+    rdfs:label "Development Status" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Description of development status, e.g. Active, inactive, suspended." .
+
+fal:hasSourceCodeOf rdf:Property ;
+    rdfs:label "Is Source Code Of" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:anyURI ;
+    rdfs:comment "Link that states where software application is built from a given source code." .
+
+fal:isPartOf rdf:Property ;
+    rdfs:label "Is Part Of" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:anyURI ;
+    rdfs:comment "Indicates a CreativeWork that this CreativeWork is part of." .
+
+fal:hasSoftwareInputDataType a rdf:Property ;
+    rdfs:label "Input Data Type" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The type of input data that the software requires. This dropdown list gives a few examples, but if required, you can enter a different value here." .
+
+fal:hasSoftwareOutputDataType a rdf:Property ;
+    rdfs:label "Output Data Type" ;
+    rdfs:domain fal:Software ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The type of output data that the software creates. This dropdown list gives a few examples, but if required, you can enter a different value here." .
+
+# Relationship Properties
+
+fal:hasSoftwareFunder rdf:Property ;
+    rdfs:label "Funder" ;
+    rdfs:domain fal:Software ;
+    rdfs:range [ a owl:Class ;
+                owl:unionOf (fal:Organisation fal:Person) ] ;
+    rdfs:comment "A person or organization that supports through financial contribution." .
+
+fal:hasSoftwareDeveloper rdf:Property ;
+    rdfs:label "Developers" ;
+    rdfs:domain fal:Software ;
+    rdfs:range [ a owl:Class ;
+                owl:unionOf (fal:Organisation fal:Person) ] ;
+    rdfs:comment "The developers of the software." .
+
+#################################################################
+# Properties for Method
+#################################################################
+
+fal:hasMethodTitle a rdf:Property ;
+    rdfs:label "Title" ;
+    rdfs:domain fal:Method ;
+    rdfs:range xsd:string ;
+    rdfs:comment "This should be a short, descriptive name that is unique to this method (not for the technique or tools!). It is good practice include the acronym of the institution, technique or equipment label and a date or version label. Example: 'NG Lux Allowance Method 2024'." .
+
+fal:hasMethodType a rdf:Property ;
+    rdfs:label "Method Type" ;
+    rdfs:domain fal:Method ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The type of method this represents. Examples are 'Analysis Method', 'Research support', 'Workflow'... This is a free text field but will be converted into a controlled vocabulary field." .
+
+fal:hasCoreParameters a rdf:Property ;
+    rdfs:label "Core Parameters" ;
+    rdfs:domain fal:Method ;
+    rdfs:range xsd:string ;
+    rdfs:comment "This should be the technical specification for particular devices. It will become a new class in the future" .
+
+# Relationship Properties
+
+fal:hasMethodAuthor a rdf:Property ;
+    rdfs:label "Authors" ;
+    rdfs:domain fal:Method ;
+    rdfs:range [ a owl:Class ;
+                owl:unionOf (fal:Organisation fal:Person) ] ;
+    rdfs:comment "The creators or authors of this method. These can be persons or an organisations." .
+
+fal:hasMethodDocumentation a rdf:Property ;
+    rdfs:label "Method Documentation" ;
+    rdfs:domain fal:Method ;
+    rdfs:range fal:Publication ;
+    rdfs:comment "The documentation for the method, this can be a reference to an external document or a textual description. External documents can be described with a citation and/or a URL." .
+
+#################################################################
+# Properties for Person
+#################################################################
+
+fal:hasPersonTitle a rdf:Property ;
+    rdfs:label "Title of Person" ;
+    rdfs:domain fal:Person ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Personal title." .
+
+fal:hasFirstName a rdf:Property ;
+    rdfs:label "First Name" ;
+    rdfs:domain fal:Person ;
+    rdfs:range xsd:string ;
+    rdfs:comment "First Name." .
+
+fal:hasLastName a rdf:Property ;
+    rdfs:label "Last Name" ;
+    rdfs:domain fal:Person ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Last Name." .
+
+fal:hasBiography a rdf:Property ;
+    rdfs:label "Short Biography" ;
+    rdfs:domain fal:Person ;
+    rdfs:range xsd:string ;
+    rdfs:comment "A short bio or profile describing the defined person." .
+
+# Relationship Properties
+
+fal:hasAffiliatedOrg a rdf:Property ;
+    rdfs:label "Affiliated Organisation" ;
+    rdfs:domain fal:Person ;
+    rdfs:range fal:Organisation ;
+    rdfs:comment "The organisation the peron is affiliated with." .
+
+#################################################################
+# Properties for Organisation
+#################################################################
+
+fal:hasOrgIdentifier a rdf:Property ;
+    rdfs:label "Organisation Identifier" ;
+    rdfs:domain fal:Organisation ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Organisation Identifier." .
+
+fal:hasOrgAcronym a rdf:Property ;
+    rdfs:label "Acronym" ;
+    rdfs:domain fal:Organisation ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Abbreviation of organisation name." .
+
+fal:hasOrgName a rdf:Property ;
+    rdfs:label "Name of Organisation" ;
+    rdfs:domain fal:Organisation ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Name of Organisation." .
+
+fal:hasOrgType a rdf:Property ;
+    rdfs:label "Type of Organisation" ;
+    rdfs:domain fal:Organisation ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Type or legal status of the organisation. This dropdown list gives a few examples, but if required, you can enter a different value here." .
+
+fal:hasOrgParent a rdf:Property ;
+    rdfs:label "Parent Organisation" ;
+    rdfs:domain fal:Organisation ;
+    rdfs:range fal:Organisation ;
+    rdfs:comment "Parent Organisation." .
+
+fal:hasOrgFirstActiveDate a rdf:Property ;
+    rdfs:label "First active date" ;
+    rdfs:domain fal:Organisation ;
+    rdfs:range xsd:date ;
+    rdfs:comment "First date this organisation was active in E-RIHS (administrative field which will be automatically filled in)" .
+
+fal:hasOrgLastActiveDate a rdf:Property ;
+    rdfs:label "Last active date" ;
+    rdfs:domain fal:Organisation ;
+    rdfs:range xsd:date ;
+    rdfs:comment "Last date this organisation was active in E-RIHS (administrative field which will be automatically filled in)" .
+
+# Relationship Properties
+
+fal:hasAffiliatedPerson a rdf:Property ;
+    rdfs:label "Affiliated Researchers" ;
+    rdfs:domain fal:Organisation ;
+    rdfs:range fal:Person ;
+    rdfs:comment "The person who works in this organisation." .
+
+#################################################################
+# Properties for reference material 
+#################################################################
+
+fal:hasReferenceMaterial a rdf:Property ;
+    rdfs:label "Material" ;
+    rdfs:domain fal:ReferenceMaterial ;
+    rdfs:range xsd:string ;
+    rdfs:comment "What material the reference material is made of." .
+
+fal:hasReferenceMaterialType a rdf:Property ;
+    rdfs:label "Material Type" ;
+    rdfs:domain fal:ReferenceMaterial ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Which material type the reference material is intended for." .
+
+fal:hasReferenceManufacturer a rdf:Property ;
+    rdfs:label "Manufacturer" ;
+    rdfs:domain fal:ReferenceMaterial ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Who produced the reference material (person, company, or institution)." .
+
+fal:hasReferenceLocation a rdf:Property ;
+    rdfs:label "Location" ;
+    rdfs:domain fal:ReferenceMaterial ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Where the reference material is stored." .
+
+fal:hasAnalyte a rdf:Property ;
+    rdfs:label "Measured Analyte" ;
+    rdfs:domain fal:ReferenceMaterial ;
+    rdfs:range fal:Analyte ;
+    rdfs:comment "A measured analyte in the reference material." .
+
+fal:hasCertificate a rdf:Property ;
+    rdfs:label "Certificate" ;
+    rdfs:domain fal:ReferenceMaterial ;
+    rdfs:range xsd:anyURI ;
+    rdfs:comment "Certificate issued by the manufacturer (link to online document)." .
+
+# Analyte Properties
+fal:hasAnalyteName a rdf:Property ;
+    rdfs:label "Name" ;
+    rdfs:domain fal:Analyte ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The name of the analyte." .
+
+fal:hasAnalyteValue a rdf:Property ;
+    rdfs:label "Value" ;
+    rdfs:domain fal:Analyte ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The certified value of the analyte." .
+
+fal:hasAnalyteUnit a rdf:Property ;
+    rdfs:label "Unit" ;
+    rdfs:domain fal:Analyte ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The unit of measurement for the analyte value." .
+
+fal:hasAnalyteUncertainty a rdf:Property ;
+    rdfs:label "Uncertainty" ;
+    rdfs:domain fal:Analyte ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The uncertainty of the analyte measurement." .
+
+fal:hasAnalyteUncertaintyType a rdf:Property ;
+    rdfs:label "Uncertainty Type" ;
+    rdfs:domain fal:Analyte ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The type of uncertainty measurement." .
+
+#################################################################
+# Universal Properties 
+#################################################################
+
+fal:hasIdentifier a rdf:Property ;
+    rdfs:label "Identifiers" ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Identifiers used to define the digital resource." .
+
+dc:title a rdf:Property ;
+    rdfs:label "Name" ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The name of the digital resource." .
+
+fal:hasDescription a rdf:Property ;
+    rdfs:label "Description" ;
+    rdfs:range xsd:string ;
+    rdfs:comment "A description/documentation of the digital resource." .
+
+fal:hasTechniques a rdf:Property ;
+    rdfs:label "Analytical Techniques" ;
+    rdfs:range xsd:string ;
+    rdfs:comment "A list of the analytical techniques carried out within this service. The terms are taken from the Research Vocabularies Australia (https://vocabs.ardc.edu.au/viewById/650)." .
+
+fal:hasDisciplines a rdf:Property ;
+    rdfs:label "Research Disciplines" ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Research disciplines associated with the digital resource." .
+
+fal:hasVersion a rdf:Property ;
+    rdfs:label "Version" ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The version number of the digital resource" .
+
+fal:hasKeywords a rdf:Property ;
+    rdfs:label "Keywords" ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Additional terms and concepts that highlight the digital resource." .
+
+fal:hasRelatedTools a rdf:Property ;
+    rdfs:label "Related Tools" ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Tools (software or devices) that are related to this digital resource." .
+
+fal:hasPublication a rdf:Property ;
+    rdfs:label "Related Publications" ;
+    rdfs:range fal:Publication ;
+    rdfs:comment "References related to the digital resource" .
+
+fal:hasOrganisation a rdf:Property ;
+    rdfs:label "Organisations" ;
+    rdfs:range fal:Organisation ;
+    rdfs:comment "Information about the organisations that create or relate to the digital resource." .
+
+fal:hasPerson a rdf:Property ;
+    rdfs:label "People" ;
+    rdfs:range fal:Person ;
+    rdfs:comment "Information about people related to the digital contents." .
+
+fal:hasRole a rdf:Property ;
+    rdfs:label "Role" ;
+    rdfs:range xsd:string ;
+    rdfs:comment "What role does this person or organisation play in the creation of the digital resource" .
+
+fal:hasLinks a rdf:Property ;
+    rdfs:label "Related Links" ;
+    rdfs:range xsd:anyURI ;
+    rdfs:comment "The URLs for the related webpages, files, and other types of digital resources." .
+
+fal:hasCountry a rdf:Property ;
+    rdfs:label "Country of Operation" ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The country in which the person is based for legal and professional reasons, the value will be used in relation to distribution of people and in relation to initial assessment of eligibility when it is related to location." .
+
+fal:hasEmail a rdf:Property ;
+    rdfs:label "Email" ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Contact email address (professional)." .
+
+fal:hasPhone a rdf:Property ;
+    rdfs:label "Phone" ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Contact phone number (professional)." .
+
+fal:hasImage a rdf:Property ;
+    rdfs:label "Image URL" ;
+    rdfs:range xsd:anyURI ;
+    rdfs:comment "URL to an image representing the person (e.g. portrait or profile photo)." .
+
+fal:hasWebPage a rdf:Property ;
+    rdfs:label "Webpage" ;
+    rdfs:range xsd:anyURI ;
+    rdfs:comment "Webpage(s) related to the person (e.g. personal webpage, profile page on the institutional website, etc.)." .
+
+fal:hasJoinDate a rdf:Property ;
+    rdfs:label "Date of joining the field" ;
+    rdfs:range xsd:date ;
+    rdfs:comment "When did the person or organisation start working in this field?" .
+
+fal:hasCreationDate a rdf:Property ;
+    rdfs:label "Creation Date" ;
+    rdfs:range xsd:date ;
+    rdfs:comment "The creation date of the digital resource." .
+
+
+
